@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+
+/*Prints this text below and exit with succes*/
 int main(void)
 {
 	/*Prints this text below and exit with succes*/

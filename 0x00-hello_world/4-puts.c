@@ -1,11 +1,11 @@
 #include <stdio.h>
 
 
-/*Prints this text below and exit with succes*/
+/**
+ * Prints "Programming is like building a multilingual puzz" and exit 
+ */
 int main(void)
 {
-	/*Prints this text below and exit with succes*/
-
 	puts("\"Programming is like building a multilingual puzzle");
 
 	return (0);

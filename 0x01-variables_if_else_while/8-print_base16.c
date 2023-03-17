@@ -7,13 +7,14 @@
 int main(void)
 {
 	int c;
+	char ch;
 
 	for (c = 48; c < 58; c++)
 	{
 		putchar(c);
 		if (c == 57)
 		{
-			for (char ch = 'a'; ch <= 'f'; ch++)
+			for (ch = 'a'; ch <= 'f'; ch++)
 			{
 				putchar(ch);
 			}

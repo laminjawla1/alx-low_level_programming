@@ -1,9 +1,15 @@
 #include <stdio.h>
 
+/**
+*main - print all possible combinations
+*of two two-digits numbers
+*Return: 0
+*/
+
 int main(void)
 {
-	int i, j, k, l;
-		
+	int i, j;
+
 	for (i = 0; i < 99; i++)
 	{
 		for (j = i + 1; j < 100; j++)

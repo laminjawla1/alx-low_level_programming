@@ -2,8 +2,7 @@
 
 /**
 *main - call the print_alphabet function
-*that prints the lowercase alphabets
-*in reverse order
+*that prints the alphabets in lowercse
 *Return: On success 0
 */
 

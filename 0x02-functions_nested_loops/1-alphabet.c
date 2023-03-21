@@ -2,15 +2,15 @@
 
 /**
 *print_alphabet - prints the alphabet
-*in reverse order
-*Return: 0
+*in lower case
+*Return: void
 */
 
 void print_alphabet(void)
 {
 	char c;
 
-        for (c = 'z'; c >= 'a'; c--)
+        for (c = 'a'; c <= 'z'; c++)
         {
         	_putchar(c);
         }

@@ -8,20 +8,11 @@
 
 int _get_sqrt(int n)
 {
-	int i, result;
+	float sqrt;
 
-	i = result = 1;
-
-	if (n <= 1)
-	{
-		return (n);
-	}
-	while (result <= n)
-	{
-		i++;
-		result = i * i;
-	}
-	return (i - 1);
+	for (sqrt = 0.01; sqrt * sqrt < n; sqrt += 0.01);
+	return ((int) sqrt);
+ 
 }
 
 /**

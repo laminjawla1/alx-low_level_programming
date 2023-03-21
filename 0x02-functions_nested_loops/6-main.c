@@ -10,7 +10,7 @@ int main(void)
 {
 	int r;
 
-	r = _abs(-88);
+	r = _abs(-25);
 	printf("%d\n", r);
 
 	return (0);

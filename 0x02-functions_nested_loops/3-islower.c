@@ -2,7 +2,7 @@
 
 /**
 *_islower - checks if a char is lower
-*@parameterc: the character to be checked
+*@c: the character to be checked
 *
 *Return: 1 if parameter is lower
 *0 otherwies

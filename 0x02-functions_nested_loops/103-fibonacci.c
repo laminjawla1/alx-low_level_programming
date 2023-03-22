@@ -24,7 +24,7 @@ int main(void)
 
 long calc_fib(void)
 {
-	long a, b, c, sum;
+	long a, b, sum;
 	a = 1;
 	b = 2;
 	sum = b;
@@ -36,7 +36,7 @@ long calc_fib(void)
 		{
 			sum += b;
 		}
-		a = b - b;
+		a = b - a;
 	}
 	return (sum);
 }

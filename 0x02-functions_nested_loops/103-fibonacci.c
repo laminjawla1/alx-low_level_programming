@@ -25,6 +25,7 @@ int main(void)
 long calc_fib(void)
 {
 	long a, b, sum;
+
 	a = 1;
 	b = 2;
 	sum = b;

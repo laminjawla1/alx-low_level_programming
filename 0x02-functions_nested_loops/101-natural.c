@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+int sum_multiples(void);
+
 /**
 *main - call the sum_multiples sunc
 *Return: 0

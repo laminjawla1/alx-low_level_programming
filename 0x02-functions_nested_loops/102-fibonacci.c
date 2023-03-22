@@ -21,17 +21,26 @@ int main(void)
 
 void print_fib_50(void)
 {
-	int a, b, c;
+	long a, b, c, i;
 
+	i = 0;
 	a = 0;
 	b = 1;
 
-	while (a < 1000)
+	while (i < 52)
 	{
-		printf("%d, ", a);
+		if (i < 51)
+		{
+			printf("%ld, ", a);
+		}
+		else
+		{
+			printf("%ld", a);
+		}
 		c = a;
 		a = b;
 		b = c + b;
+		i++;
 	}
 	printf("\n");
 }

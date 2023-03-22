@@ -19,6 +19,4 @@ void positive_or_negative(int n)
 	{
 		printf("%d is zero\n", n);
 	}
-
-	return (0);
 }

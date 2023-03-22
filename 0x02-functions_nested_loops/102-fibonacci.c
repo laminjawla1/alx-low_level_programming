@@ -29,7 +29,7 @@ void print_fib_50(void)
 
 	while (i < 50)
 	{
-		if (i < 51)
+		if (i < 49)
 		{
 			printf("%ld, ", a);
 		}

@@ -24,23 +24,19 @@ int main(void)
 
 long calc_fib(void)
 {
-	long a, b, c, i, sum;
-
-	i = 0;
+	long a, b, c, sum;
 	a = 1;
 	b = 2;
-	sum = 0;
+	sum = b;
 
-	while (i < 40)
+	while (a + b < 4000000)
 	{
-		c = a;
-		a = b;
-		b = c + b;
-		if (a < 4000000)
+		b += a;
+		if (b % 2 == 0)
 		{
-			sum += a;
+			sum += b;
 		}
-		i++;
+		a = b - b;
 	}
 	return (sum);
 }

@@ -2,12 +2,12 @@
 #include "main.h"
 
 /**
-*is_leap_year - checks if a year is a leap year
-*@year: year to be cheked
-*Return: 1 if yes 0 for no
+*is_leap - checks if a year is leap
+*@year: year to be computed
+*Return: True of False
 */
 
-int is_leap_year(int year)
+int is_leap(int year)
 {
 	return (((year % 4 == 0) && ((year % 400 == 0) ||
 		(year % 100 != 0))));
@@ -22,9 +22,9 @@ int is_leap_year(int year)
 */
 void print_remaining_days(int month, int day, int year)
 {
-	if (is_leap_year(year))
+	if (is_leap(year))
 	{
-		if (month >= 2 && day >= 60)
+		if (month > 2 && day >= 60)
 		{
 			day++;
 		}

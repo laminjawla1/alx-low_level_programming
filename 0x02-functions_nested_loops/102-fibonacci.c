@@ -24,8 +24,8 @@ void print_fib_50(void)
 	long a, b, c, i;
 
 	i = 0;
-	a = 0;
-	b = 1;
+	a = 1;
+	b = 2;
 
 	while (i < 52)
 	{

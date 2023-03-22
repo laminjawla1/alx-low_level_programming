@@ -1,6 +1,17 @@
 #include <stdio.h>
 
 /**
+*main - call the sum_multiples sunc
+*Return: 0
+*/
+
+int main(void)
+{
+	sum_multiples();
+	return (0);
+}
+
+/**
 *sum_multiples - compute the sum of multiples
 *of 3 and 5 below 1023
 *Return: the sum

@@ -27,7 +27,7 @@ void print_fib_50(void)
 	a = 1;
 	b = 2;
 
-	while (i < 52)
+	while (i < 50)
 	{
 		if (i < 51)
 		{

@@ -23,7 +23,7 @@ int main(void)
 
 void print_fib_98(void)
 {
-	unsigned long long a, b, c, i;
+	unsigned long a, b, c, i;
 
 	i = 0;
 	a = 1;
@@ -33,11 +33,11 @@ void print_fib_98(void)
 	{
 		if (i < FIB - 1)
 		{
-			printf("%llu, ", a);
+			printf("%lu, ", a);
 		}
 		else
 		{
-			printf("%llu", a);
+			printf("%lu", a);
 		}
 		c = a;
 		a = b;

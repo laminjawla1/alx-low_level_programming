@@ -7,10 +7,6 @@
 
 int main(void)
 {
-	int i;
-
-	i = 98;
-	positive_or_negative(i);
-
+	printf("%d\n", largest_number(3, 1, 2));
 	return (0);
 }

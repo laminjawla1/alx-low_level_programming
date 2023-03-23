@@ -33,19 +33,47 @@ void one_to_100(void)
 	{
 		if (is_multiple_of_3_and_5(i))
 		{
-			printf("Fizz Buzz ");
+			if (i < 100)
+			{
+				printf("Fizz Buzz ");
+			}
+			else
+			{
+				printf("Fizz Buzz");
+			}
 		}
 		else if (is_multiple_of_3(i))
 		{
-			printf("Fizz ");
+			if (i < 100)
+			{
+				printf("Fizz ");
+			}
+			else
+			{
+				printf("Fizz");
+			}
 		}
 		else if (is_multiple_of_5(i))
 		{
-			printf("Buzz ");
+			if (i < 100)
+			{
+				printf("Buzz ");
+			}
+			else
+			{
+				printf("Buzz");
+			}
 		}
 		else
 		{
-			printf("%d ", i);
+			if (i < 100)
+			{
+				printf("%d ", i);
+			}
+			else
+			{
+				printf("%d", i);
+			}
 		}
 	}
 	printf("\n");

@@ -35,7 +35,7 @@ void one_to_100(void)
 		{
 			if (i < 100)
 			{
-				printf("Fizz Buzz ");
+				printf("FizzBuzz ");
 			}
 			else
 			{

@@ -79,6 +79,7 @@ int is_multiple_of_5(int n)
 *is_multiple_of_3_and_5 - checks if num is
 *a multiple of both 3 and 5
 *@n: number to be checked
+*Return: true or false
 */
 
 int is_multiple_of_3_and_5(int n)

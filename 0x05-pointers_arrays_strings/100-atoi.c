@@ -1,15 +1,6 @@
 #include <ctype.h>
-#include <stdio.h>
+#include <string.h>
 
-int calc(char *s)
-{
-	int n;
-
-	for (n = 0; *s; s++)
-		if (isdigit(*s))
-			n = 10 * n + (*s - '0');
-	return (n);
-}
 int _atoi(char *s)
 {
 	int n, sign;

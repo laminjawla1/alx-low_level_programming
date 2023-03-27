@@ -1,55 +1,45 @@
 #include <ctype.h>
 #include <string.h>
-
+#include <string.h>
+/**
+*_atoi - converts a string to an int
+*@s: the string to be converted
+*Return: an integer
+*/
 int _atoi(char *s)
 {
-	int n, sign;
+	int len, i, d, n, f, digit;
 
-	while (isspace(*s))
-		s++;	/* get rid of white spaces */
+	i = 0;
+	d = 0;
+	n = 0;
+	f = 0;
+	len = strlen(s);
+	digit = 0;
 
-	if (isdigit(*s))
+
+	while (i < len && f == 0)
 	{
-		return (calc(s));
-	}
-	if (*s == '+' || *s == '-')
-	{
-		if (isdigit(*(s + 1)))
+		if (s[i] == '-')
+			++d;
+
+		if (s[i] >= '0' && s[i] <= '9')
 		{
-			sign = (*s == '-') ? -1 : 1;
-			return (calc(s) * sign);
+			digit = s[i] - '0';
+			if (d % 2)
+				digit = -digit;
+			n = n * 10 + digit;
+			f = 1;
+			if (s[i + 1] < '0' || s[i + 1] > '9')
+				break;
+			f = 0;
 		}
-		else
-		{
-			while (!isdigit(*s))
-				s++;
-			for (n = 0; isdigit(*s); s++)
-				n = 10 * n + (*s - '0');
-			return (n);
-		}
+		i++;
 	}
-	if (*s == '+' || *s == '-')
-	{
-		while (!isdigit(*s))
-			s++;
-		if (*(s - 1) == '+' || *(s - 1) == '-')
-		{
-			sign = (*(s - 1) == '-') ? -1 : 1;
-			for (n = 0; *s; s++)
-				if (isdigit(*s))
-					n = 10 * n + (*s - '0');
-				else
-					return (n);
-			return (n * sign);
-		}
-	}
-	else
-	{
-		while (!isdigit(*s))
-			s++;
-		for (n = 0; isdigit(*s); s++)
-			n = 10 * n + (*s - '0');
-		return (n);
-	}
-	return (0);
+
+	if (f == 0)
+		return (0);
+
+	return (n);
 }
+

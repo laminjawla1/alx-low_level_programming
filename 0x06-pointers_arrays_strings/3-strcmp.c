@@ -1,4 +1,3 @@
-#include <string.h>
 /**
 *_strcmp - compares s1 to s2
 *@s1: first string param
@@ -9,7 +8,13 @@ int _strcmp(char *s1, char *s2)
 {
 	int i, n, cnt;
 
-	n = strlen(s1);
+	n = 0;
+	i = 0;
+	while (s1[i])
+	{
+		n++;
+		i++;
+	}
 	cnt = 0;
 	for (i = 0; i < n; i++)
 		if (s1[i] == s2[i])

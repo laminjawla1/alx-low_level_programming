@@ -8,11 +8,12 @@
 void print_number(int n)
 {
 	unsigned int tmp;
-
+	
+	tmp = (unsigned int) n;
 	if (n < 0)
 	{
 		_putchar('-');
-		tmp = -n;
+		tmp = -tmp;
 	}
 	if (tmp / 10)
 		print_number(tmp / 10);

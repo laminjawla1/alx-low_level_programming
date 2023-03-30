@@ -10,6 +10,7 @@ char *rot13(char *s)
 	int i;
 
 	char *p = s;
+
 	while (*p)
 	{
 		for (i = 0; i < 52; i++)

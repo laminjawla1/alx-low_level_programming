@@ -9,17 +9,18 @@ char *rot13(char *s)
 	char codes[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 	int i;
 
-	while (*s)
+	char *p = s;
+	while (*p)
 	{
 		for (i = 0; i < 52; i++)
 		{
-			if (*s == msg[i])
+			if (*p == msg[i])
 			{
-				*s = codes[i];
+				*p = codes[i];
 				break;
 			}
 		}
-		s++;
+		p++;
 	}
 	return (s);
 }

@@ -5,18 +5,21 @@
 */
 char *rot13(char *s)
 {
+	char msg[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char codes[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 	int i;
 
-	for (i = 0; s[i]; i++)
+	while (*s)
 	{
-		while ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
+		for (i = 0; i < 52; i++)
 		{
-			if (s[i] >= 'a' && s[i] <= 'z')
-				s[i] = ((s[i] - 'a' + 13) % 26) + 'a';
-			else
-				s[i] = ((s[i] - 'A' + 13) % 26) + 'A';
-			i++;
+			if (*s == msg[i])
+			{
+				*s = codes[i];
+				break;
+			}
 		}
+		s++;
 	}
 	return (s);
 }

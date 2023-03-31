@@ -49,9 +49,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	/*Determine whether the result will fit in the res var*/
 	if (len1 >= size_r || len2 >= size_r)
 		return (0);
-
-	k = 0;
-	for (i = len1 - 1, j = len2 - 1; i >= 0 || j >= 0; i--, j--)
+	for (i = len1 - 1, j = len2 - 1, k = 0; i >= 0 || j >= 0; i--, j--, k++)
 	{
 		d1 = (i >= 0) ? n1[i] - '0' : 0;
 		d2 = (j >= 0) ? n2[i] - '0' : 0;
@@ -59,7 +57,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		sum = d1 + d2 + carry_over;
 		r[k] = sum % 10 + '0';
 		carry_over = sum / 10;
-		k++;
 	}
 	if (carry_over > 0)
 	{

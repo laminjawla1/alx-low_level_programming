@@ -1,3 +1,4 @@
+#include <stdio.h>
 /**
 *in - checks if a char is in a str
 *@s: string to be searched
@@ -19,18 +20,19 @@ int in(char *s, char c)
 *@accept: The substring
 *Return: Num of chars in accept and s
 */
-unsigned int _strspn(char *s, char *accept)
+char *_strpbrk(char *s, char *accept)
 {
 	unsigned int cnt = 0;
 	int i, n;
+	char *p = 0;
 
 	for (i = 0; s[i]; i++)
 	{
 		n = in(accept, s[i]);
 		if (n)
-			cnt++;
+			p[k] = s[i];
 		else
-			return (cnt);
+			return (p);
 	}
-	return (cnt);
+	return (p);
 }

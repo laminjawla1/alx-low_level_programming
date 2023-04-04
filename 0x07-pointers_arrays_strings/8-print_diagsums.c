@@ -11,7 +11,7 @@ int get_first_diag(int *a, int n)
 	int d = 0, i;
 
 	for (i = 0; i < n; i++)
-		d += a[i * n + 1];
+		d += a[i * n + i];
 	return (d);
 }
 /**

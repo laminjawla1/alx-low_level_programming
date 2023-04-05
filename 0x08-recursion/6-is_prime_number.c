@@ -5,14 +5,18 @@
 */
 int is_prime_number(int n)
 {
-	static int i = 2;
+	int i = 2;
 
 	if (n <= 1)
 		return (0);
-	if (!(n % i))
-		return (0);
-	if (i * i > n)
+	if (n == 2)
 		return (1);
-	i++;
-	return (is_prime_number(n));
+
+	while (i * i <= n)
+	{
+		if (!(n % i))
+			return (0);
+		i++;
+	}
+	return (1);
 }

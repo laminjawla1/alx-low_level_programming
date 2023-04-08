@@ -33,6 +33,6 @@ int main(int argc, char *argv[])
 	n1 = get_int(argv[1]);
 	n2 = get_int(argv[2]);
 
-	printf("%d\n", n1 + n2);
+	printf("%d\n", n1 * n2);
 	return (0);
 }

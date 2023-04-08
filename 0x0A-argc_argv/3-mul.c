@@ -6,11 +6,13 @@
 */
 int get_int(char *s)
 {
-	int i, n = 0;
+	int i, n = 0, sign;
 
+	sign = (s[0] == '-') ? -1 : 1;
 	for (i = 0; s[i]; i++)
-		n = 10 * n + (s[i] - '0');
-	return (n);
+		if (s[i] >= '0' && s[i] <= '9')
+			n = 10 * n + (s[i] - '0');
+	return (n * sign);
 }
 /**
 *main - multiplies all the numbers passed as arguments

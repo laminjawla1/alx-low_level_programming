@@ -32,11 +32,11 @@ int main(int argc, char *argv[])
 	total += coins;
 
 	coins = five(cent);
-	cent = cent - coins * 10;
+	cent = cent - coins * 5;
 	total += coins;
 
 	coins = two(cent);
-	cent = cent - coins * 10;
+	cent = cent - coins * 2;
 	total += coins;
 
 	coins = 0;

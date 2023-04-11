@@ -34,9 +34,20 @@ int **alloc_grid(int width, int height)
 	a = (int **)malloc(sizeof(int) * (height));
 	if (!a)
 		return (NULL);
-	for (i = 0; i < width; i++)
+	for (i = 0; i < height; i++)
+	{
 		a[i] = (int *)malloc(sizeof(int) * width);
-
-	_memcpy((int **)a, width, height, 0);
-	return ((int **)a);
+		if (!a[i])
+		{
+			while (i >= 0)
+			{
+				free(a[i]);
+				i--;
+			}
+			free(a);
+			return (NULL);
+		}
+	}
+	_memcpy(a, width, height, 0);
+	return (a);
 }

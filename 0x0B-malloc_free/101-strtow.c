@@ -10,7 +10,7 @@ int get_n_words(char *s)
 	int total = 0, i;
 
 	for (i = 0; s[i]; i++)
-		if (s[i] == ' ' || s[i] == '\n')
+		if (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
 			total++;
 	return (total);
 }

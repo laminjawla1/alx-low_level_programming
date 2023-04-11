@@ -27,12 +27,11 @@ char *argstostr(int ac, char **av)
 	char *result;
 	int len = 0, i, j, k;
 
-	for (i = 0; i < ac; i++)
-		len += get_len(av[i]);
+	if (!ac || !av)
+		return (NULL);
 
 	for (i = 0; i < ac; i++)
-		if (av[i] == NULL || av[i] == 0)
-			return (NULL);
+		len += get_len(av[i]);
 
 	result = (char *)malloc(sizeof(char) * (len + ac) + 1);
 	if (!result)

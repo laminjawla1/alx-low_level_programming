@@ -17,6 +17,14 @@ int main(int ac, char *av[])
         return (1);
     }
     printf("%s", s);
+
+	s = argstostr(0, NULL);
+	if (s == NULL)
+	{
+		printf("Failed\n");
+		return 1;
+	}
+	printf("%s\n", s);
     free(s);
     return (0);
 }

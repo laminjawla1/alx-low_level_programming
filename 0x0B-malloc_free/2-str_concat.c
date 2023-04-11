@@ -27,18 +27,17 @@ char *str_concat(char *s1, char *s2)
 	char *result;
 	int len1, len2, i, j;
 
-	len1 = get_len(s1);
-	len2 = get_len(s2);
-
 	if (s1 == NULL)
 		s1 = "";
 	if (s2 == NULL)
 		s2 = "";
 
+	len1 = get_len(s1);
+	len2 = get_len(s2);
+
 	result = (char *)malloc(sizeof(char) * (len1 + len2) + 1);
 	if (!result)
 		return (0);
-
 	for (i = 0; s1[i]; i++)
 		result[i] = s1[i];
 	for (j = 0; s2[j]; j++, i++)

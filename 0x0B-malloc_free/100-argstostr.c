@@ -30,6 +30,10 @@ char *argstostr(int ac, char **av)
 	for (i = 0; i < ac; i++)
 		len += get_len(av[i]);
 
+	for (i = 0; i < ac; i++)
+		if (!av[i])
+			av[i] = "";
+
 	result = (char *)malloc(sizeof(char) * (len + ac));
 	if (!result)
 		return (NULL);

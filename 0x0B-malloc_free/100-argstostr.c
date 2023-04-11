@@ -31,8 +31,8 @@ char *argstostr(int ac, char **av)
 		len += get_len(av[i]);
 
 	for (i = 0; i < ac; i++)
-		if (av[i] == NULL || av[i] == 0)
-			av[i] = "";
+		if (!av[i])
+			rereturn (NULL);
 
 	result = (char *)malloc(sizeof(char) * (len + ac) + 1);
 	if (!result)

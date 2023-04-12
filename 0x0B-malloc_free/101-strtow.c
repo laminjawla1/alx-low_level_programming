@@ -26,14 +26,16 @@ int get_n_words(char *s)
 	int total = 0, i, f = 0;
 
 	for (i = 0; s[i]; i++)
+	{
 		if (s[i] == ' ')
 			f = 0;
 		else
-			if (f == 0)
+			if (!f)
 			{
 				f = 1;
 				total++;
 			}
+	}
 	return (total);
 }
 /**
@@ -44,7 +46,7 @@ int get_n_words(char *s)
 char **strtow(char *str)
 {
 	char **words, *tmp __attribute__((unused));
-	int n_words, str_len __attribute__((unused));
+	int n_words, str_len __attribute__((unused)), i, c = 0, k = 0, end, start;
 
 	if (!str)
 		return (NULL);
@@ -55,5 +57,30 @@ char **strtow(char *str)
 	words = (char **)malloc(sizeof(char *) * (n_words + 1));
 	if (!words)
 		return (NULL);
+
+	for (i = 0; str[i]; i++)
+	{
+		if (str[i] == ' ' || str[i] == '\0')
+		{
+			if (c)
+			{
+				end = i;
+				tmp = (char *)malloc(sizeof(char) * (c + 1));
+				if (!tmp)
+					return (NULL);
+				while (start < end)
+					*tmp++ = str[start++];
+				*tmp = '\0';
+				words[k] = tmp - c;
+				k++;
+				c = 0;
+			}
+			else if (c++ == 0)
+			{
+				start = i;
+			}
+		}
+	}
+	words[k] = NULL;
 	return (words);
 }

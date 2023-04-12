@@ -7,11 +7,17 @@
 */
 int get_n_words(char *s)
 {
-	int total = 0, i;
+	int total = 0, i, f = 0;
 
 	for (i = 0; s[i]; i++)
-		if (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-			total++;
+		if (s[i] == ' ')
+			f = 0;
+		else
+			if (flag == 0)
+			{
+				flag = 1;
+				total++;
+			}
 	return (total);
 }
 /**
@@ -21,12 +27,15 @@ int get_n_words(char *s)
 */
 char **strtow(char *str)
 {
-	char **words;
-	int n_words;
+	char **words, *tmp;
+	int n_words, str_len;
 
 	if (!str)
 		return (NULL);
+	str_len = _strlen(str);
 	n_words = get_n_words(str);
+	if (!n_words)
+		return (NULL);
 	words = (char **)malloc(sizeof(char *) * (n_words + 1));
 	if (!words)
 		return (NULL);

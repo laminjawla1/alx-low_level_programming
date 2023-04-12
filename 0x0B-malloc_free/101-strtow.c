@@ -1,6 +1,22 @@
 #include <stdlib.h>
 #include <ctype.h>
 /**
+*_strlen - gets the length of a string
+*@s: string
+*Return: Len of a str
+*/
+int _strlen(char *s)
+{
+	int len = 0, i = 0;
+
+	while (s[i])
+	{
+		len++;
+		i++;
+	}
+	return (len);
+}
+/**
 *get_n_words - get the number of words in string
 *@s: string
 *Return: The number of words
@@ -13,9 +29,9 @@ int get_n_words(char *s)
 		if (s[i] == ' ')
 			f = 0;
 		else
-			if (flag == 0)
+			if (f == 0)
 			{
-				flag = 1;
+				f = 1;
 				total++;
 			}
 	return (total);
@@ -27,8 +43,8 @@ int get_n_words(char *s)
 */
 char **strtow(char *str)
 {
-	char **words, *tmp;
-	int n_words, str_len;
+	char **words, *tmp __attribute__((unused));
+	int n_words, str_len __attribute__((unused));
 
 	if (!str)
 		return (NULL);

@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 /**
 *init_dog - initialize a dog object
 *@d: Dog obj

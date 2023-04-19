@@ -11,14 +11,22 @@
 */
 int main(int argc, char *argv[])
 {
-	int result;
-
 	if (argc != 4)
 	{
 		printf("Error\n");
 		return (98);
 	}
-	result = get_op_func(argv[2])(atoi(argv[1]), atoi(argv[3]));
-	printf("%d\n", result);
+	if (!get_op_func(argv[2]))
+	{
+		printf("Error\n");
+		exit(99);
+	}
+	if ((*argv[2] == '/' && !atoi(argv[3])) ||
+		(*argv[2] == '%' && !atoi(argv[3])))
+	{
+		printf("Error\n");
+		exit(100);
+	}
+	printf("%d\n", get_op_func(argv[2])(atoi(argv[1]), atoi(argv[3])));
 	return (0);
 }

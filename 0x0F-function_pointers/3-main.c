@@ -9,7 +9,7 @@
 *
 *Return: (0)
 */
-int main(int argc__attribute__((unused)), char *argv[])
+int main(int argc __attribute__((unused)), char *argv[])
 {
 	if (argc != 4)
 	{

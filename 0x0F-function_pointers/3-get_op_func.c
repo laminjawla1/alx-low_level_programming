@@ -11,19 +11,15 @@ int (*get_op_func(char *s))(int, int)
 	op_t ops[] = {
 		{"+", op_add},
 		{"-", op_sub},
+		{"*", op_mul},
 		{"/", op_div},
 		{"%", op_mod},
-		{"*", op_mul},
 		{NULL, NULL}
 	};
+	int i;
 
-	int i = 0;
-
-	while (ops[i].op)
-	{
-		if (*ops[i].op == *s)
-			return (ops[i].f);
+	i = 0;
+	while (ops[i].op && *(ops[i].op) != *s)
 		i++;
-	}
-	return (NULL);
+	return (ops[i].f);
 }

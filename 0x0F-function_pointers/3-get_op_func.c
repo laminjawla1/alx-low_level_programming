@@ -1,6 +1,4 @@
 #include "3-calc.h"
-#include <stdio.h>
-#include <stdlib.h>
 /**
 *get_op_func - gets a pointer to a function indexed by s
 *@s: Operator

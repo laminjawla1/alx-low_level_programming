@@ -1,7 +1,7 @@
 ; A program to output "Hello, Holberton"
 
-	global	main
-	extern	printf
+	global	main	; Make main available to the linker
+	extern	printf	; Available in another library
 main:
 	mov	edi, fmt
 	xor	eax, eax

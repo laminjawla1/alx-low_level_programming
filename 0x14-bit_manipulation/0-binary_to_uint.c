@@ -1,38 +1,5 @@
 #include "main.h"
 /**
-*power - finds the result of base ^ exp
-*
-*@base: Base
-*@exp: Exponent
-*Return: base ^ exp
-*/
-unsigned int power(int base, int exp)
-{
-	unsigned int p = 1;
-	int i;
-
-	for (i = 0; i < exp; i++)
-		p *= base;
-	return (p);
-}
-/**
-*_strlen - gets the length of a string
-*
-*@b: String
-*Return: len(b)
-*/
-unsigned int _strlen(const char *b)
-{
-	unsigned int cnt = 0, i = 0;
-
-	while (b[i])
-	{
-		cnt++;
-		i++;
-	}
-	return (cnt);
-}
-/**
 *is_num - checks if a character is a number
 *@c: Characer
 *Return: 1 or 0
@@ -49,17 +16,15 @@ int is_num(unsigned char c)
 */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int num = 0, len, n;
-	int i, j = 0;
+	unsigned int num = 0, i;
 
-	len = _strlen(b);
-	for (i = len - 1; b[i] && i >= 0; i--, j++)
+	if (!b)
+		return (0);
+	for (i = 0; b[i]; i++)
 	{
-		n = b[i] - '0';
-		if (is_num(b[i]))
-			num += n * power(2, j);
-		else
+		if (!is_num(b[i]))
 			return (0);
+		num = 2 * num + (b[i] - '0');
 	}
 	return (num);
 }

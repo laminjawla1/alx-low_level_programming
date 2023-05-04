@@ -49,8 +49,8 @@ int is_num(unsigned char c)
 */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int num = 0, len, j = 0, n;
-	int i;
+	unsigned int num = 0, len, n;
+	int i, j = 0;
 
 	len = _strlen(b);
 	for (i = len - 1; b[i] && i >= 0; i--, j++)

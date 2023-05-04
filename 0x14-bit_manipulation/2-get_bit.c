@@ -1,19 +1,4 @@
 #include "main.h"
-
-/**
-*count_bits - Count the number of bits in a number
-*
-*@n:Number
-*Return: Number of bits
-*/
-size_t count_bits(unsigned long int n)
-{
-	size_t cnt;
-
-	for (cnt = 0; n; n >>= 1)
-		cnt++;
-	return (cnt);
-}
 /**
 *get_bit - gets a bit at a specified index
 *

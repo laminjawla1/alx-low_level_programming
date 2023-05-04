@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
 *count_bits - count the number of bits in a number
 *
@@ -23,9 +24,11 @@ void print_binary(unsigned long int n)
 {
 	int i;
 
-	for (i = count_bits(n); i >= 0; i--)
-		if (((unsigned char) n & (1 << (unsigned char ) i)))
-			_putchar('1');
-		else
-			_putchar('0');
+	if (n == 0)
+	{
+		_putchar('0');
+		return;
+	}
+	for (i = count_bits(n) - 1; i >= 0; i--)
+		(n & (1 << i)) ? _putchar('1') : _putchar('0');
 }

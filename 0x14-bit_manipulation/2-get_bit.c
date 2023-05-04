@@ -23,7 +23,7 @@ size_t count_bits(unsigned long int n)
 */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	if (index > count_bits(n))
+	if (index > 63)
 		return (-1);
 	return ((n >> index) & 1);
 }

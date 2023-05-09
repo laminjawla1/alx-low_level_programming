@@ -36,15 +36,7 @@ int main(int argc, char *argv[]__attribute__((unused)))
 	while ((read(file_from, buffer, BUFF_SIZE)) > 0)
 		dprintf(file_to, "%s", buffer);
 	free(buffer);
-	if (!close(file_from))
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-		exit(100);
-	}
-	if (!close(file_to))
-	{
-		dprintf(STDERR_FILENO, "Error: can't close fd %d\n", file_to);
-		exit(100);
-	}
+	close(file_from);
+	close(file_to);
 	return (0);
 }

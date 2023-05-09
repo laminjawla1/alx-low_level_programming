@@ -22,7 +22,7 @@ char *create_buffer(char *file)
 */
 void _close(int fildes)
 {
-	if (close(fildes))
+	if (close(fildes) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: can't close fd %d\n", fildes);
 		exit(100);

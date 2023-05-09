@@ -11,7 +11,7 @@ char *create_buffer(char *file)
 	buffer = malloc(sizeof(char) * 1024);
 	if (!buffer)
 	{
-		dprintf(STDERR_FILENO, "Error: can't write to file %s\n", file);
+		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file);
 		exit(100);
 	}
 	return (buffer);
@@ -24,7 +24,7 @@ void _close(int fildes)
 {
 	if (close(fildes) == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: can't close fd %d\n", fildes);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fildes);
 		exit(100);
 	}
 }
@@ -63,7 +63,7 @@ int main(int argc, char *argv[]__attribute__((unused)))
 		bytes = write(file_to, buffer, bytes);
 		if (bytes == -1 || file_to == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: can't write to %s\n", argv[2]);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			free(buffer);
 			exit(99);
 		}

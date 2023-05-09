@@ -36,7 +36,7 @@ void _close(int fildes)
 *@argv: Argument vector
 *Return: 0 on success
 */
-int main(int argc, char *argv[]__attribute__((unused)))
+int main(int argc, char *argv[])
 {
 	int file_from, file_to, bytes;
 	char *buffer;

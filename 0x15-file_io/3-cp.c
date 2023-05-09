@@ -1,4 +1,6 @@
 #include "main.h"
+
+void close_files(int f1, int f2);
 /**
 *create_buffer - creates a one kilobyte buffer
 *@file: File
@@ -68,8 +70,23 @@ int main(int argc, char *argv[]__attribute__((unused)))
 			exit(99);
 		}
 	}
+	if (bytes == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		free(buffer);
+		exit(99);
+	}
 	free(buffer);
-	_close(file_from);
-	_close(file_to);
+	close_files(file_from, file_to);
 	return (0);
+}
+/**
+*close_files - closes files
+*@f1: file one
+*@f2: file two
+*/
+void close_files(int f1, int f2)
+{
+	_close(f1);
+	_close(f2);
 }

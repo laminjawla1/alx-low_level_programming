@@ -70,12 +70,6 @@ int main(int argc, char *argv[]__attribute__((unused)))
 			exit(99);
 		}
 	}
-	if (bytes == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		free(buffer);
-		exit(99);
-	}
 	free(buffer);
 	close_files(file_from, file_to);
 	return (0);

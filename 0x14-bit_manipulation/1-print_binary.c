@@ -1,20 +1,6 @@
 #include "main.h"
 
 /**
-*count_bits - count the number of bits in a number
-*
-*@n: Number
-*Return: Number of bits
-*/
-int count_bits(unsigned long int n)
-{
-	int cnt;
-
-	for (cnt = 0; n; n >>= 1)
-		cnt++;
-	return (cnt);
-}
-/**
 *print_binary - prints a number in binary
 *
 *@n: Number
@@ -30,5 +16,10 @@ void print_binary(unsigned long int n)
 		return;
 	}
 	for (i = 63; i >= 0; i--)
-		(1 & (n >> i)) ? _putchar('1') : _putchar('0');
+	{
+		if (1 & (1UL << i)
+			_putchar('1');
+		else
+			_putchar('0');
+	}
 }

@@ -4,7 +4,7 @@
 *
 *@n: Number
 *@index: Index
-
+*
 *Return: bit or -1 if not successful
 */
 int get_bit(unsigned long int n, unsigned int index)

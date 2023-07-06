@@ -1,10 +1,11 @@
 #include "main.h"
 /**
-*get_bit - gets a bit at a specified index
+*get_bit - Gets a bit at the given index
 *
 *@n: Number
 *@index: Index
-*Return: bit or -1
+
+*Return: bit or -1 if not successful
 */
 int get_bit(unsigned long int n, unsigned int index)
 {

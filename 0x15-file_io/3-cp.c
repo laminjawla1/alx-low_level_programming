@@ -54,8 +54,7 @@ int main(int argc, char *argv[])
 	}
 	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	buffer = create_buffer(argv[2]);
-	while ((bytes = read(file_from, buffer, BUFF_SIZE)) > 0)
-	{
+	do {
 		if (bytes == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
@@ -69,7 +68,7 @@ int main(int argc, char *argv[])
 			free(buffer);
 			exit(99);
 		}
-	}
+	} while ((bytes = read(file_from, buffer, BUFF_SIZE)) > 0)
 	free(buffer);
 	close_files(file_from, file_to);
 	return (0);

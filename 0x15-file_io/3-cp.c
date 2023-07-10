@@ -24,7 +24,7 @@ char *create_buffer(char *file)
 */
 void _close(int fildes)
 {
-	if (close(fildes) == -1)
+	if ((close(fildes)) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fildes);
 		exit(100);

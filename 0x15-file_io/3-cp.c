@@ -54,14 +54,13 @@ int main(int argc, char *argv[])
 	}
 	file_to = open(argv[2], O_CREAT | O_RDWR | O_TRUNC, 0664);
 	buffer = create_buffer(argv[2]);
-	while (1)
-	{
+	do {
 		bytes = read(file_from, buffer, BUFF_SIZE);
 		if (bytes == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			free(buffer);
-			exit(99);
+			exit(98);
 		}
 		bytes = write(file_to, buffer, bytes);
 		if (bytes == -1 || file_to == -1)
@@ -70,7 +69,7 @@ int main(int argc, char *argv[])
 			free(buffer);
 			exit(99);
 		}
-	}
+	} while (bytes > 0);
 	free(buffer);
 	close_files(file_from, file_to);
 	return (0);

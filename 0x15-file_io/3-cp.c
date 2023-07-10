@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 			free(buffer);
 			exit(99);
 		}
-	} while ((bytes = read(file_from, buffer, BUFF_SIZE)) > 0)
+	} while ((bytes = read(file_from, buffer, BUFF_SIZE)) > 0);
 	free(buffer);
 	close_files(file_from, file_to);
 	return (0);

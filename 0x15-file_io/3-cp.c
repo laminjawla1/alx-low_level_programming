@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	file_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	file_to = open(argv[2], O_CREAT | O_RDWR | O_TRUNC, 0664);
 	buffer = create_buffer(argv[2]);
 	do {
 		bytes = read(file_from, buffer, BUFF_SIZE);

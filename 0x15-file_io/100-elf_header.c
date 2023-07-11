@@ -115,7 +115,7 @@ void print_elf_magic_numbers(unsigned char *e_ident)
 */
 void print_elf_class(unsigned char *e_ident)
 {
-	puts("Class: ");
+	printf("Class: ");
 	switch (e_ident[EI_CLASS])
 	{
 		case ELFCLASS32:

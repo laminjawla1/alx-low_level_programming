@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		printf("Usage: elf_header elf_filename\n");
+		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n");
 		exit(98);
 	}
 	sample_elf_file = open(argv[1], O_RDONLY);
@@ -44,10 +44,12 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: <%s> is not a valid elf file\n", argv[1]);
 		exit(98);
 	}
-	printf("ELF Header:\n");
 	print_elf_magic_numbers(elf_header->e_ident);
 	print_elf_class(elf_header->e_ident);
 	print_elf_header_data(elf_header->e_ident);
+	print_elf_version(elf_header->e_ident);
+	print_elf_osabi(elf_header->e_ident);
+	print_elf_abi_version(elf_header->e_ident);
 	free(elf_header);
 	_close(sample_elf_file);
 	return (0);
@@ -77,7 +79,7 @@ void _close(int sample_elf_file)
 *
 *Return: true or false
 */
-bool elf_identification(unsigned char *e_ident)
+bool elf_identification(u_chr e_ident[EI_NIDENT])
 {
 	int i;
 
@@ -94,10 +96,11 @@ bool elf_identification(unsigned char *e_ident)
 *
 *Return: None
 */
-void print_elf_magic_numbers(unsigned char *e_ident)
+void print_elf_magic_numbers(u_chr e_ident[EI_NIDENT])
 {
 	int i;
 
+	printf("ELF Header:\n");
 	printf("Magic: ");
 	for (i = 0; i < EI_NIDENT; i++)
 	{
@@ -114,7 +117,7 @@ void print_elf_magic_numbers(unsigned char *e_ident)
 *
 *Return: None
 */
-void print_elf_class(unsigned char *e_ident)
+void print_elf_class(u_chr e_ident[EI_NIDENT])
 {
 	printf("Class: ");
 	switch (e_ident[EI_CLASS])
@@ -139,7 +142,7 @@ void print_elf_class(unsigned char *e_ident)
 *
 *Return: void
 */
-void print_elf_header_data(unsigned char *e_ident)
+void print_elf_header_data(u_chr e_ident[EI_NIDENT])
 {
 	printf("Data: ");
 	switch (e_ident[EI_DATA])
@@ -156,4 +159,75 @@ void print_elf_header_data(unsigned char *e_ident)
 		default:
 			printf("<unknown> %x>\n", e_ident[EI_CLASS]);
 	}
+}
+/**
+* print_elf_version - Prints the version of header of the elf file
+*
+*@e_ident: Elf header
+*
+*Return: void
+*/
+void print_elf_version(u_chr e_ident[EI_NIDENT])
+{
+	(e_ident[EI_VERSION] == EV_CURRENT) ? printf("Version: %d (current)\n",
+		e_ident[EI_VERSION]) : printf("Version: \n");
+}
+/**
+* print_elf_osabi - Prints the OS/ABI of an elf file header
+*
+*@e_ident: An elf file header
+*
+*Return: None
+*/
+void print_elf_osabi(u_chr e_ident[EI_NIDENT])
+{
+	printf("OS/ABI: ");
+
+	switch (e_ident[EI_OSABI])
+	{
+		case ELFOSABI_ARM:
+			printf("ARM\n");
+			break;
+		case ELFOSABI_FREEBSD:
+			printf("UNIX - FreeBSD\n");
+			break;
+		case ELFOSABI_HPUX:
+			printf("UNIX - HP-UX\n");
+			break;
+		case ELFOSABI_IRIX:
+			printf("UNIX - IRIX\n");
+			break;
+		case ELFOSABI_LINUX:
+			printf("UNIX - Linux\n");
+			break;
+		case ELFOSABI_NETBSD:
+			printf("UNIX - NetBSD\n");
+			break;
+		case ELFOSABI_SOLARIS:
+			printf("UNIX - Solaris\n");
+			break;
+		case ELFOSABI_STANDALONE:
+			printf("Standalone App\n");
+			break;
+		case ELFOSABI_TRU64:
+			printf("UNIX - TRU64\n");
+			break;
+		case ELFOSABI_NONE:
+			printf("UNIX - System V\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_ident[EI_OSABI]);
+	}
+
+}
+/**
+* print_elf_abi_version - Prints the version of elf abi
+*
+*@e_ident: Elf header
+*
+*Return: void
+*/
+void print_elf_abi_version(u_chr e_ident[EI_NIDENT])
+{
+	printf("ABI Version: %d\n", e_ident[EI_ABIVERSION]);
 }

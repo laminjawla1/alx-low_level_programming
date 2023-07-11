@@ -14,6 +14,9 @@
 #include <stdbool.h>
 
 
+/*Typedefs*/
+typedef unsigned char u_chr;
+
 #define BUFF_SIZE 1024
 
 /*Function prototypes*/
@@ -21,9 +24,12 @@ int create_file(const char *filename, char *text_content);
 ssize_t read_textfile(const char *filename, size_t letters);
 int append_text_to_file(const char *filename, char *text_content);
 void _close(int sample_elf_file);
-bool elf_identification(unsigned char *e_ident);
-void print_elf_magic_numbers(unsigned char *e_ident);
-void print_elf_class(unsigned char *e_ident);
-void print_elf_header_data(unsigned char *e_ident);
+bool elf_identification(u_chr e_ident[EI_NIDENT]);
+void print_elf_magic_numbers(u_chr e_ident[EI_NIDENT]);
+void print_elf_class(u_chr e_ident[EI_NIDENT]);
+void print_elf_header_data(u_chr e_ident[EI_NIDENT]);
+void print_elf_version(u_chr e_ident[EI_NIDENT]);
+void print_elf_osabi(u_chr e_ident[EI_NIDENT]);
+void print_elf_abi_version(u_chr e_ident[EI_NIDENT]);
 
 #endif

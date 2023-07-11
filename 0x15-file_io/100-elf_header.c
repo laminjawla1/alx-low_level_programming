@@ -47,6 +47,7 @@ int main(int argc, char *argv[])
 	printf("ELF Header:\n");
 	print_elf_magic_numbers(elf_header->e_ident);
 	print_elf_class(elf_header->e_ident);
+	print_elf_header_data(elf_header->e_ident);
 	free(elf_header);
 	_close(sample_elf_file);
 	return (0);
@@ -129,5 +130,30 @@ void print_elf_class(unsigned char *e_ident)
 			break;
 		default:
 			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+	}
+}
+/**
+* print_elf_header_data - Prints the data in the header of the given elf file
+*
+*@e_ident: An elf file header;
+*
+*Return: void
+*/
+void print_elf_header_data(unsigned char *e_ident)
+{
+	printf("Data: ");
+	switch (e_ident[EI_DATA])
+	{
+		case ELFDATA2LSB:
+			printf("2's complement, little endian\n");
+			break;
+		case ELFDATA2MSB:
+			printf("2's complement, big endian\n");
+			break;
+		case ELFDATANONE:
+			printf("none\n");
+			break;
+		default:
+			printf("<unknown> %x>\n", e_ident[EI_CLASS]);
 	}
 }

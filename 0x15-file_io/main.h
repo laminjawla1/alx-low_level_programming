@@ -24,5 +24,6 @@ void _close(int sample_elf_file);
 bool elf_identification(unsigned char *e_ident);
 void print_elf_magic_numbers(unsigned char *e_ident);
 void print_elf_class(unsigned char *e_ident);
+void print_elf_header_data(unsigned char *e_ident);
 
 #endif

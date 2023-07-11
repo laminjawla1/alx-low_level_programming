@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
 	/*Variable Declaration*/
 	Elf64_Ehdr *elf_header;
-	int sample_elf_file;
+	int sample_elf_file, value_after_read;
 
 	/*Checking for the right number comman-line arguments*/
 	if (argc != 2)
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 	/*Checking if opening was successful*/
 	if (sample_elf_file == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file <%s>\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't open file <%s>\n", argv[1]);
 		exit(98);
 	}
 	/*Allocate sum chunk of bytes for the elf_header*/
@@ -36,6 +36,17 @@ int main(int argc, char *argv[])
 	{
 		_close(sample_elf_file);
 		dprintf(STDERR_FILENO, "Error: Insufficient memory\n");
+		exit(98);
+	}
+
+	/*Read the contents of the sample elf file*/
+	value_after_read = read(sample_elf_file, elf_header, sizeof(Elf64_Ehdr));
+	/*Check the value returned by read. -1 means an error occured*/
+	if (value_after_read == -1)
+	{
+		free(elf_header);
+		_close(sample_elf_file);
+		dprintf(STDERR_FILENO, "Error: Can't read from file <%s>\n", argv[1]);
 		exit(98);
 	}
 	return (0);

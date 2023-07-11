@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
 	}
 	printf("ELF Header:\n");
 	print_elf_magic_numbers(elf_header->e_ident);
+	print_elf_class(elf_header->e_ident);
 	free(elf_header);
 	_close(sample_elf_file);
 	return (0);
@@ -103,5 +104,30 @@ void print_elf_magic_numbers(unsigned char *e_ident)
 			printf("%02x\n", e_ident[i]);
 		else
 			printf("%02x ", e_ident[i]);
+	}
+}
+/**
+* print_elf_class - Prints the class of an elf file
+*
+*@e_ident: An elf file header
+*
+*Return: None
+*/
+void print_elf_class(unsigned char *e_ident)
+{
+	puts("Class: ");
+	swich(e_ident[EI_CLASS])
+	{
+		case ELFCLASS32:
+			printf("ELF32\n");
+			break;
+		case ELFCLASS64:
+			printf("ELF64\n");
+			break;
+		case ELFNOCLASS:
+			printf("none\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_ident[EI_CLASS])
 	}
 }

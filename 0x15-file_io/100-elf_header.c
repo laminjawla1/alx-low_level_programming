@@ -46,6 +46,8 @@ int main(int argc, char *argv[])
 	}
 	printf("ELF Header:\n");
 	print_elf_magic_numbers(elf_header->e_ident);
+	free(header);
+	_close(sample_elf_file);
 	return (0);
 }
 /**

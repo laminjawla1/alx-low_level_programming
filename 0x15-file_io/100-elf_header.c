@@ -124,10 +124,10 @@ void print_elf_class(unsigned char *e_ident)
 		case ELFCLASS64:
 			printf("ELF64\n");
 			break;
-		case ELFNOCLASS:
+		case ELFDATANONE:
 			printf("none\n");
 			break;
 		default:
-			printf("<unknown: %x>\n", e_ident[EI_CLASS])
+			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
 	}
 }

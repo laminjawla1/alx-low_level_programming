@@ -10,43 +10,38 @@
 */
 int main(int argc, char *argv[])
 {
-	/*Variable Declaration*/
 	Elf64_Ehdr *elf_header;
 	int sample_elf_file, value_after_read;
 
-	/*Checking for the right number comman-line arguments*/
 	if (argc != 2)
 	{
 		printf("Usage: elf_header elf_filename\n");
 		exit(98);
 	}
-
-	/*Open the file*/
 	sample_elf_file = open(argv[1], O_RDONLY);
-	/*Checking if opening was successful*/
 	if (sample_elf_file == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file <%s>\n", argv[1]);
 		exit(98);
 	}
-	/*Allocate sum chunk of bytes for the elf_header*/
 	elf_header = malloc(sizeof(Elf64_Ehdr));
-	/*Check if the allocation was successful*/
 	if (!elf_header)
 	{
 		_close(sample_elf_file);
 		dprintf(STDERR_FILENO, "Error: Insufficient memory\n");
 		exit(98);
 	}
-
-	/*Read the contents of the sample elf file*/
 	value_after_read = read(sample_elf_file, elf_header, sizeof(Elf64_Ehdr));
-	/*Check the value returned by read. -1 means an error occured*/
 	if (value_after_read == -1)
 	{
 		free(elf_header);
 		_close(sample_elf_file);
 		dprintf(STDERR_FILENO, "Error: Can't read from file <%s>\n", argv[1]);
+		exit(98);
+	}
+	if (!(elf_identification(elf_header->e_ident)))
+	{
+		dprintf(STDERR_FILENO, "Error: <%s> is not a valid elf file\n", argv[1]);
 		exit(98);
 	}
 	return (0);
@@ -68,4 +63,21 @@ void _close(int sample_elf_file)
 			sample_elf_file);
 		exit(98);
 	}
+}
+/**
+* elf_identification - Identifies the sample elf file as valid or invalid
+*
+*@e_ident: An array of the elf magic numbers
+*
+*Return: true or false
+*/
+bool elf_identification(unsigned char *e_ident)
+{
+	int i;
+
+	for (i = 0; i < 4; i++)
+		if (e_ident[i] != 'E' && e_ident[i] != 'F' &&
+			e_ident[i] != 'L' && e_ident[i] != 127)
+			return (false);
+	return (true);
 }

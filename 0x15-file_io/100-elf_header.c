@@ -44,6 +44,8 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: <%s> is not a valid elf file\n", argv[1]);
 		exit(98);
 	}
+	printf("ELF Header:\n");
+	print_elf_magic_numbers(elf_header->e_ident);
 	return (0);
 }
 /**
@@ -80,4 +82,24 @@ bool elf_identification(unsigned char *e_ident)
 			e_ident[i] != 'L' && e_ident[i] != 127)
 			return (false);
 	return (true);
+}
+/**
+* print_elf_magic_numbers - Prints the magic numbers in header of the elf
+*
+*@e_ident: Elf magic numbers
+*
+*Return: None
+*/
+void print_elf_magic_numbers(unsigned char *e_ident)
+{
+	int i;
+
+	printf("Magic: ");
+	for (i = 0; i < EI_NIDENT; i++)
+	{
+		if (i == EI_NIDENT - 1)
+			printf("%02x\n", e_ident[i]);
+		else
+			printf("%02x ", e_ident[i]);
+	}
 }

@@ -44,12 +44,7 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: <%s> is not a valid elf file\n", argv[1]);
 		exit(98);
 	}
-	print_elf_magic_numbers(elf_header->e_ident);
-	print_elf_class(elf_header->e_ident);
-	print_elf_header_data(elf_header->e_ident);
-	print_elf_version(elf_header->e_ident);
-	print_elf_osabi(elf_header->e_ident);
-	print_elf_abi_version(elf_header->e_ident);
+	elf_header_printer(elf_header);
 	free(elf_header);
 	_close(sample_elf_file);
 	return (0);
@@ -88,6 +83,22 @@ bool elf_identification(u_chr e_ident[EI_NIDENT])
 			e_ident[i] != 'L' && e_ident[i] != 127)
 			return (false);
 	return (true);
+}
+/**
+* elf_header_printer - Prints an elf file header
+*
+*@elf_header: Header of an elf file
+*
+*Return: void
+*/
+void elf_header_printer(Elf64_Ehdr *elf_header)
+{
+	print_elf_magic_numbers(elf_header->e_ident);
+	print_elf_class(elf_header->e_ident);
+	print_elf_header_data(elf_header->e_ident);
+	print_elf_version(elf_header->e_ident);
+	print_elf_osabi(elf_header->e_ident);
+	print_elf_abi_version(elf_header->e_ident);
 }
 /**
 * print_elf_magic_numbers - Prints the magic numbers in header of the elf

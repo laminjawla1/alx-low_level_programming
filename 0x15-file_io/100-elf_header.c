@@ -254,8 +254,8 @@ void print_elf_abi_version(u_chr e_ident[EI_NIDENT])
 */
 void print_elf_type(unsigned int e_type, u_chr *e_ident)
 {
-	(e_ident[EI_DATA] == ELFDATA2MSB) ? e_type >>= 8 : e_type;
 	printf("Type: ");
+	(e_ident[EI_DATA] == ELFDATA2MSB) ? e_type >>= 8 : e_type;
 	switch (e_type)
 	{
 		case ET_CORE:
@@ -268,10 +268,10 @@ void print_elf_type(unsigned int e_type, u_chr *e_ident)
 			printf("EXEC (Executable file)\n");
 			break;
 		case ET_NONE:
-			printf("None (None)\n");
+			printf("NONE (None)\n");
 			break;
 		case ET_REL:
-			printf("REL (Relocatable)\n");
+			printf("REL (Relocatable file)\n");
 			break;
 		default:
 			printf("<unknown : %x>\n", e_type);

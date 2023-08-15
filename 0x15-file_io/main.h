@@ -16,8 +16,10 @@
 
 /*Typedefs*/
 typedef unsigned char u_chr;
+typedef unsigned long int u_lint;
 
 #define BUFF_SIZE 1024
+#define E_OFFSET 0xff00ff00
 
 /*Function prototypes*/
 int create_file(const char *filename, char *text_content);
@@ -32,5 +34,6 @@ void print_elf_header_data(u_chr e_ident[EI_NIDENT]);
 void print_elf_version(u_chr e_ident[EI_NIDENT]);
 void print_elf_osabi(u_chr e_ident[EI_NIDENT]);
 void print_elf_abi_version(u_chr e_ident[EI_NIDENT]);
-
+void print_elf_type(size_t e_type, u_chr *e_ident);
+void print_elf_entry(u_lint e_entry, u_chr *e_ident);
 #endif

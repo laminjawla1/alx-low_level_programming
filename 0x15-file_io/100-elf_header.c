@@ -99,6 +99,8 @@ void elf_header_printer(Elf64_Ehdr *elf_header)
 	print_elf_version(elf_header->e_ident);
 	print_elf_osabi(elf_header->e_ident);
 	print_elf_abi_version(elf_header->e_ident);
+	print_elf_type(elf_header->e_type, elf_header->e_ident);
+	print_elf_entry(elf_header->e_entry, elf_header->e_ident);
 }
 /**
 * print_elf_magic_numbers - Prints the magic numbers in header of the elf
@@ -241,4 +243,58 @@ void print_elf_osabi(u_chr e_ident[EI_NIDENT])
 void print_elf_abi_version(u_chr e_ident[EI_NIDENT])
 {
 	printf("ABI Version: %d\n", e_ident[EI_ABIVERSION]);
+}
+/**
+* print_elf_type - Prints the type of an elf header file
+*
+* @e_type: Type of the elf header
+* @e_ident: Elf identifier
+*
+* Return: None
+*/
+void print_elf_type(size_t e_type, u_chr *e_ident)
+{
+	(e_ident[EI_DATA] == ELFDATA2MSB) ? e_type >>= 8 : e_type;
+	printf("Type: ");
+	switch (e_type)
+	{
+		case ET_CORE:
+			printf("CORE (Core file)\n");
+			break;
+		case ET_DYN:
+			printf("DYN (Shared object file)\n");
+			break;
+		case ET_EXEC:
+			printf("EXEC (Executable file)\n");
+			break;
+		case ET_NONE:
+			printf("None (None)\n");
+			break;
+		case ET_REL:
+			printf("REL (Relocatable)");
+			break;
+		default:
+			printf("<unknown : %lx>\n", e_type);
+	}
+}
+/**
+* print_elf_entry - Prints an entry point of the header of an elf file
+*
+*@e_entry: Entry point
+*@e_ident: Elf id
+*
+*/
+void print_elf_entry(u_lint e_entry, u_chr *e_ident)
+{
+	printf("Entry point address: ");
+	if (e_ident[EI_DATA] == ELFDATA2MSB)
+	{
+		e_entry = ((e_entry << 8) & 0xff00ff00) |
+			((e_entry >> 8) & 0xff00ff);
+		e_entry = (e_entry << 16) | (e_entry >> 16);
+	}
+	if (e_ident[EI_CLASS] == ELFCLASS32)
+		printf("%#lx\n", e_entry);
+	else
+		printf("%#lx\n", e_entry);
 }

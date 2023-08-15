@@ -252,7 +252,7 @@ void print_elf_abi_version(u_chr e_ident[EI_NIDENT])
 *
 * Return: None
 */
-void print_elf_type(size_t e_type, u_chr *e_ident)
+void print_elf_type(unsigned int e_type, u_chr *e_ident)
 {
 	(e_ident[EI_DATA] == ELFDATA2MSB) ? e_type >>= 8 : e_type;
 	printf("Type: ");
@@ -271,10 +271,10 @@ void print_elf_type(size_t e_type, u_chr *e_ident)
 			printf("None (None)\n");
 			break;
 		case ET_REL:
-			printf("REL (Relocatable)");
+			printf("REL (Relocatable)\n");
 			break;
 		default:
-			printf("<unknown : %lx>\n", e_type);
+			printf("<unknown : %x>\n", e_type);
 	}
 }
 /**
@@ -289,8 +289,8 @@ void print_elf_entry(u_lint e_entry, u_chr *e_ident)
 	printf("Entry point address: ");
 	if (e_ident[EI_DATA] == ELFDATA2MSB)
 	{
-		e_entry = ((e_entry << 8) & 0xff00ff00) |
-			((e_entry >> 8) & 0xff00ff);
+		e_entry = ((e_entry << 8) & 0xFF00FF00) |
+			((e_entry >> 8) & 0xFF00FF);
 		e_entry = (e_entry << 16) | (e_entry >> 16);
 	}
 	if (e_ident[EI_CLASS] == ELFCLASS32)

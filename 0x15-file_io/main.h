@@ -34,6 +34,6 @@ void print_elf_header_data(u_chr e_ident[EI_NIDENT]);
 void print_elf_version(u_chr e_ident[EI_NIDENT]);
 void print_elf_osabi(u_chr e_ident[EI_NIDENT]);
 void print_elf_abi_version(u_chr e_ident[EI_NIDENT]);
-void print_elf_type(size_t e_type, u_chr *e_ident);
+void print_elf_type(unsigned int e_type, u_chr *e_ident);
 void print_elf_entry(u_lint e_entry, u_chr *e_ident);
 #endif

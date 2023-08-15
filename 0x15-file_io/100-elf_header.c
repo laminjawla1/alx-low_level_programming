@@ -255,7 +255,8 @@ void print_elf_abi_version(u_chr e_ident[EI_NIDENT])
 void print_elf_type(unsigned int e_type, u_chr *e_ident)
 {
 	printf("Type: ");
-	(e_ident[EI_DATA] == ELFDATA2MSB) ? e_type >>= 8 : e_type;
+	if (e_ident[EI_DATA] == ELFDATA2MSB)
+		e_type >>= 8;
 	switch (e_type)
 	{
 		case ET_CORE:

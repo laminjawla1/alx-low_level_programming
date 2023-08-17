@@ -1,7 +1,7 @@
 #include "lists.h"
 
 /**
-* create_node - Creates a new node
+* _create_node - Creates a new node
 *
 *@n: Value for field of the node
 *

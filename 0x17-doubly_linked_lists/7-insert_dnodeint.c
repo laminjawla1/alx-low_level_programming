@@ -1,24 +1,6 @@
 #include "lists.h"
 
 /**
-* len - gets the length of the given list
-*
-*@h: Head of the list
-*
-*Return: len(h)
-*/
-size_t len(dlistint_t *h)
-{
-	size_t l = 0;
-
-	while (h)
-	{
-		l++;
-		h = h->next;
-	}
-	return (l);
-}
-/**
 * insert_dnodeint_at_index - Inserts a node at a given position
 *
 *@h: Head of the list
@@ -35,12 +17,12 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 
 	if (!node)
 		return (NULL);
-	if (idx > len(*h) + 1)
-		return (NULL);
 	if (idx == 0)
 		return (add_dnodeint(h, n));
-	for (i = 0; i < idx - 1; i++)
+	for (i = 0; i < idx - 1 && t1; i++)
 		t1 = t1->next;
+	if (!t1)
+		return (NULL);
 	node->next = t1->next;
 	node->prev = t1;
 	t1->next->prev = node;

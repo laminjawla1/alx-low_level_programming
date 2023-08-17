@@ -7,7 +7,7 @@
 *
 *Return: The newly created node
 */
-dlistint_t *create_node(const int n)
+dlistint_t *_create_node(const int n)
 {
 	dlistint_t *node = malloc(sizeof(dlistint_t));
 
@@ -29,7 +29,7 @@ dlistint_t *create_node(const int n)
 */
 dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
-	dlistint_t *node = create_node(n);
+	dlistint_t *node = _create_node(n);
 
 	if (!node)
 		return (NULL);

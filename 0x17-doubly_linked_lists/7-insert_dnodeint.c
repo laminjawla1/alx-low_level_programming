@@ -11,7 +11,7 @@
 */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	unsigned int i = 0;
+	size_t i = 0;
 	dlistint_t *t1 = *h;
 	dlistint_t *node;
 
@@ -35,6 +35,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		t1 = t1->next;
 		i++;
 	}
-	free(node);
+	/*free(node);*/
 	return (NULL);
 }

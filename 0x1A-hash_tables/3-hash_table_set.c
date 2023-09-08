@@ -34,7 +34,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *node;
 	char *cpy = NULL;
 
-	if (!key || !ht || value == NULL)
+	if (key == '\0' || ht == NULL || value == NULL || key == NULL)
 		return (0);
 	node = create_node(key, value);
 	if (!node)

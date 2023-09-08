@@ -41,8 +41,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	index = key_index((const unsigned char *) key, ht->size);
 	if (ht->array[index])
 	{
-		node->next = ht->array[index];
-		ht->array[index] = node;
+		free(ht->array[index]->value);
+		ht->array[index]->value = strdup(value);
 	}
 	else
 		ht->array[index] = node;

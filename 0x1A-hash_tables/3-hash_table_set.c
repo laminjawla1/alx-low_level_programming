@@ -43,10 +43,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (!cpy)
 		return (0);
 	index = key_index((const unsigned char *) key, ht->size);
-	if (ht->array[index] != NULL)
+	if (ht->array[index])
 	{
-		free(ht->array[index]->value);
-		ht->array[index]->value = cpy;
+		node->next = ht->array[index];
+		ht->array[index] = node;
 	}
 	else
 		ht->array[index] = node;

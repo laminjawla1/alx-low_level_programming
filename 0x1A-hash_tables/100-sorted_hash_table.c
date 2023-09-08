@@ -108,33 +108,26 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	return (1);
 }
 /**
-* shash_table_get - Inserts an element into the table
+* shash_table_get - Gets an item from the hash table
 *
 *@ht: Hash table
 *@key: Key
 *
-*Return: 1 or 0
+*Return: A value or NULL
 */
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
 	shash_node_t *node;
-	unsigned long int index;
 
-	if (ht == NULL || key == NULL || *key == '\0')
+	if (key == NULL || *key == '\0' || ht == NULL)
 		return (NULL);
-
-	index = key_index((const unsigned char *)key, ht->size);
-	if (index >= ht->size)
-		return (NULL);
-
 	node = ht->shead;
-	while (node != NULL && strcmp(node->key, key) != 0)
+	while (node && strcmp(node->key, key) != 0)
 		node = node->snext;
-
 	return ((node == NULL) ? NULL : node->value);
 }
 /**
-* shash_table_print - Inserts an element into the table
+* shash_table_print - Prints the hash table
 *
 *@ht: Hash table
 */
@@ -142,22 +135,21 @@ void shash_table_print(const shash_table_t *ht)
 {
 	shash_node_t *node;
 
-	if (ht == NULL)
+	if (!ht)
 		return;
-
 	node = ht->shead;
 	printf("{");
-	while (node != NULL)
+	while (node)
 	{
 		printf("'%s': '%s'", node->key, node->value);
 		node = node->snext;
-		if (node != NULL)
+		if (node)
 			printf(", ");
 	}
 	printf("}\n");
 }
 /**
-* shash_table_print_rev - Inserts an element into the table
+* shash_table_print_rev - Prints the hash table in reverse
 *
 *@ht: Hash table
 */
@@ -165,12 +157,11 @@ void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *node;
 
-	if (ht == NULL)
+	if (!ht)
 		return;
-
 	node = ht->stail;
 	printf("{");
-	while (node != NULL)
+	while (node)
 	{
 		printf("'%s': '%s'", node->key, node->value);
 		node = node->sprev;

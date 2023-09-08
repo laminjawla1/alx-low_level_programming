@@ -32,17 +32,21 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
 	hash_node_t *node;
+	char *cpy = NULL;
 
 	if (!key || !ht || value == NULL)
 		return (0);
 	node = create_node(key, value);
 	if (!node)
 		return (0);
+	cpy = strdup(value);
+	if (!cpy)
+		return (0);
 	index = key_index((const unsigned char *) key, ht->size);
-	if (ht->array[index])
+	if (ht->array[index] != NULL)
 	{
 		free(ht->array[index]->value);
-		ht->array[index]->value = strdup(value);
+		ht->array[index]->value = cpy;
 	}
 	else
 		ht->array[index] = node;

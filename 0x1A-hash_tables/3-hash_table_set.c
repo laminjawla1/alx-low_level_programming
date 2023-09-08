@@ -30,21 +30,25 @@ hash_node_t *create_node(const char *k, const char *v)
 */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int index;
+	unsigned long int index, i;
 	hash_node_t *node;
 
 	if (ht == NULL || key == NULL || key[0] == '\0')
 		return (0);
+	index = key_index((const unsigned char *) key, ht->size);
+	for (i = index; ht->array[i]; i++)
+	{
+		if (strcmp(ht->array[i]->key, key) == 0)
+		{
+			free(ht->array[i]->value);
+			ht->array[i]->value = strdup(value);
+			return (1);
+		}
+	}
 	node = create_node(key, value);
 	if (!node)
 		return (0);
-	index = key_index((const unsigned char *) key, ht->size);
-	if (ht->array[index])
-	{
-		node->next = ht->array[index];
-		ht->array[index] = node;
-	}
-	else
-		ht->array[index] = node;
+	node->next = ht->array[index];
+	ht->array[index] = node;
 	return (1);
 }

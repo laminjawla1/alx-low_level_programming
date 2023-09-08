@@ -180,18 +180,16 @@ void shash_table_print_rev(const shash_table_t *ht)
 	printf("}\n");
 }
 /**
-* shash_table_delete - Inserts an element into the table
+* shash_table_delete - Delete the hash table
 *
 *@ht: Hash table
 */
 void shash_table_delete(shash_table_t *ht)
 {
-	shash_table_t *head = ht;
 	shash_node_t *node, *tmp;
 
-	if (ht == NULL)
+	if (!ht)
 		return;
-
 	node = ht->shead;
 	while (node)
 	{
@@ -201,7 +199,6 @@ void shash_table_delete(shash_table_t *ht)
 		free(node);
 		node = tmp;
 	}
-
 	free(head->array);
-	free(head);
+	free(ht);
 }

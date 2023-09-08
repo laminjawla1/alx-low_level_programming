@@ -78,7 +78,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	node->next = ht->array[index];
 	ht->array[index] = node;
 
-	if (ht->shead == NULL)
+	if (!ht->shead)
 	{
 		node->sprev = NULL;
 		node->snext = NULL;
@@ -95,11 +95,11 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	else
 	{
 		tmp = ht->shead;
-		while (tmp->snext != NULL && strcmp(tmp->snext->key, key) < 0)
+		while (tmp->snext && strcmp(tmp->snext->key, key) < 0)
 			tmp = tmp->snext;
 		node->sprev = tmp;
 		node->snext = tmp->snext;
-		if (tmp->snext == NULL)
+		if (!tmp->snext)
 			ht->stail = node;
 		else
 			tmp->snext->sprev = node;

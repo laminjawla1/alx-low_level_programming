@@ -43,7 +43,7 @@ int binary_search(int *array, size_t size, int value)
 	{
 		middle = start + (end - start) / 2;
 
-		/*Search Interval*/
+		/*Print Search Interval*/
 		printf("Searching in array: ");
 		print_array(array, start, end);
 

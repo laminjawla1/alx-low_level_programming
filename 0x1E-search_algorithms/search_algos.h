@@ -4,6 +4,7 @@
 /*Header Files*/
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
 /*Function prototypes*/
 int linear_search(int *array, size_t size, int value);
